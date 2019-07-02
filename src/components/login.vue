@@ -7,7 +7,7 @@
         </div>
         <div class="login_form">
           <div class="item">
-            <input type placeholder="请输入手机号" v-model="phone">
+            <input type placeholder="请输入手机号" maxlength="11" v-model="phone">
           </div>
           <div class="item">
             <input type="password" placeholder="请输入密码" v-model="password">
@@ -59,8 +59,8 @@ export default {
     return {
       register: false,
       login: true,
-      phone: "",
-      password: "",
+      phone: "11111111111",
+      password: "123456",
       r_phone: "",
       r_password: "",
       r_password_s: "",

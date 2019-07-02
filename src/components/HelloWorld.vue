@@ -131,7 +131,7 @@
               <input class="mt_10" type placeholder="请输入注额" v-model="pear_amount" @blur="scroll">
               <select class="mt_10" v-model="pe_odds">
                 <option value="0">请选择赔率</option>
-                <option :value="item" v-for="item in pear_arry">1:{{item}}</option>
+                <option :value="item" v-for="item in pear_arry" :key="item">1:{{item}}</option>
               </select>
             </div>
             <div class="form_item" @click="up_gambling('pear')">
@@ -149,7 +149,7 @@
               <input class="mt_10" type placeholder="请输入注额" v-model="double_amount" @blur="scroll">
               <select class="mt_10" v-model="db_odds">
                 <option value="0">请选择赔率</option>
-                <option :value="item" v-for="item in all_arry">1:{{item}}</option>
+                <option :value="item" v-for="item in all_arry" :key="item">1:{{item}}</option>
               </select>
             </div>
             <div class="form_item" @click="up_gambling('djdl')">
@@ -233,7 +233,7 @@
               </ul>
             </div>
             <div class="trend_body">
-              <ul v-for="item in trend">
+              <ul v-for="item in trend" :key="item">
                 <li item in trend>
                   <img src="../assets/red.png" v-if="item =='CHICKEN'||item =='ALL'">
                   <img src="../assets/black.png" v-else>
@@ -430,9 +430,10 @@ export default {
         NOTHING: 0
       };
       let result = [];
+      
       this.gambling
         .sort((a, b) => {
-          return b.odds - a.odds;
+          return b.odds*1 - a.odds*1;
         })
         .forEach((item, index) => {
           result[count[item.choice] * 6 + gamTypeOrder[item.choice]] = item;
@@ -519,6 +520,8 @@ export default {
     get_gambling() {
       http.gambling({}).then(res => {
         this.gambling = res.data;
+        console.log(res)
+        console.log('111111111111111111111111')
       });
     },
     // 实时获取总注
