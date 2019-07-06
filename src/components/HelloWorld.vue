@@ -365,6 +365,8 @@ export default {
       that.music_url = "../../static/music/翻牌.mp3";
       // 播放音乐
       that.maudio();
+      // debugger;
+      console.log(res.body)
       if (res.body === "false") {
         that.music_url = "../../static/music/m.mp3";
         that.maudio();
@@ -451,6 +453,7 @@ export default {
         });
     },
     amount: function(item) {
+       return item.chip;
       return parseInt(item.stake / item.odds - item.chip);
     },
     // 显示上庄
@@ -520,8 +523,6 @@ export default {
     get_gambling() {
       http.gambling({}).then(res => {
         this.gambling = res.data;
-        console.log(res)
-        console.log('111111111111111111111111')
       });
     },
     // 实时获取总注
@@ -582,13 +583,22 @@ export default {
       http.state({}).then(res => {
         let that = this;
         let nextTime = res.data.nextTime;
+        console.log(nextTime)
         if (nextTime!==sessionStorage.getItem('next_time')){
           sessionStorage.setItem('next_time',nextTime);
           sessionStorage.removeItem('lot_id')
         }
         let seconds = moment(nextTime).diff(moment(), "seconds");
+        console.log(seconds)
         var setTime = setInterval(function() {
           if (seconds <= 0) {
+            http.lottery({}).then((res)=>{
+               let data = res.data.body;
+                console.log(res)
+                that.lot_type = data;
+                that.get_lottery(data);
+            });
+
             clearInterval(setTime);
             return;
           }
@@ -667,6 +677,7 @@ export default {
         })
         .then(res => {
           this.profit = res.data.sum;
+          console.log(res)
           this.lot_show = true;
           sessionStorage.removeItem("lot_id");
           this.state();

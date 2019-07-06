@@ -29,7 +29,7 @@ Axios.interceptors.response.use((response) => {
 
 let baseUrl = 'http://47.103.50.102:8300/Home'
 // let baseUrl = 'http://192.168.0.104:8081'
-let web_url = '47.103.50.102:8300/Home/'
+let web_url = '47.103.50.102:8305'
 // let web_url = '192.168.0.104:8081'
 const api = {
   // gambling: `${baseUrl}/gambling`, //获取赌局
@@ -44,8 +44,8 @@ const api = {
   getUser:`${baseUrl}/user/me`,
   getLog:`${baseUrl}/gambling/log`,
   retister:`${baseUrl}/user`,
-  sendCode:`${baseUrl}/user/code`
-
+  sendCode:`${baseUrl}/user/code`,
+  lottery:`${baseUrl}/Topic/lottery`,
 }
 // 获取用户列表
 const http = {
@@ -66,6 +66,10 @@ const http = {
   // 获取赌局
   gambling: function (model) {
     return Axios.get(api.gambling, model)
+  },
+  // 开奖
+  lottery: function (model) {
+    return Axios.get(api.lottery, model)
   },
   // 上庄
   up_gambling: function (model) {
