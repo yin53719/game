@@ -544,7 +544,7 @@ export default {
     },
     // 上庄
     up_gambling(type) {
-      this.$Message.info("盈利将被扣除3%盈利");
+      
       let model = {};
       if(this.userInfo.wallet.balance<20000){
          this.$Message.warning("账户余额小于20000，上庄失败")
@@ -575,6 +575,7 @@ export default {
       ) {
         this.$Message.warning("单项坐庄上限50000金币");
       } else {
+        this.$Message.info("盈利将被扣除3%盈利");
         http
           .up_gambling(model)
           .then(res => {
@@ -630,7 +631,14 @@ export default {
     },
     //下注筹码
     selenum(num) {
+      if(this.sele_num>=20000){
+        return false;
+      }
       this.sele_num = this.sele_num + num;
+
+      if(this.sele_num>20000){
+         this.sele_num =this.sele_num - num;
+      }
       // if (this.sele_num > 10000) {
       //   this.$Message.warning("单笔下注不能超过10000");
       //   this.sele_num = 10000;
