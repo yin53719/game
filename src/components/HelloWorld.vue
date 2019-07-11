@@ -50,7 +50,7 @@
           </ul>
         </div>
         <div class="list_li">
-          <ul v-for="item in gamblingList">
+          <ul v-for="(item,i) in gamblingList" :key="i">
             <li>{{amount(item)}}/{{item.stake}}</li>
             <li>1:{{item.odds}}</li>
             <li>
@@ -131,7 +131,7 @@
               <input class="mt_10" type placeholder="请输入注额" v-model="pear_amount" @blur="scroll">
               <select class="mt_10" v-model="pe_odds">
                 <option value="0">请选择赔率</option>
-                <option :value="item" v-for="item in pear_arry" :key="item">1:{{item}}</option>
+                <option :value="item" v-for="(item,i) in pear_arry" :key="i">1:{{item}}</option>
               </select>
             </div>
             <div class="form_item" @click="up_gambling('pear')">
@@ -149,7 +149,7 @@
               <input class="mt_10" type placeholder="请输入注额" v-model="double_amount" @blur="scroll">
               <select class="mt_10" v-model="db_odds">
                 <option value="0">请选择赔率</option>
-                <option :value="item" v-for="item in all_arry" :key="item">1:{{item}}</option>
+                <option :value="item" v-for="(item,i) in all_arry" :key="i">1:{{item}}</option>
               </select>
             </div>
             <div class="form_item" @click="up_gambling('djdl')">
@@ -217,7 +217,7 @@
           <img src="../assets/close.png">
         </div>
         <div class="open_box">
-          <div class="open_tit">近20局结果走势</div>
+          <div class="open_tit">近30局结果走势</div>
           <div class="trend_wrap">
             <div class="trend_head">
               <ul>
@@ -233,7 +233,7 @@
               </ul>
             </div>
             <div class="trend_body">
-              <ul v-for="item in trend" :key="item">
+              <ul v-for="(item,i) in trend" :key="i">
                 <li item in trend>
                   <img src="../assets/red.png" v-if="item =='CHICKEN'||item =='ALL'">
                   <img src="../assets/black.png" v-else>
