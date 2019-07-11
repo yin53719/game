@@ -46,6 +46,8 @@ const api = {
   retister:`${baseUrl}/user`,
   sendCode:`${baseUrl}/user/code`,
   lottery:`${baseUrl}/Topic/lottery`,
+  GamblingAction:`${baseUrl}/Gambling/action/`,
+
 }
 // 获取用户列表
 const http = {
@@ -113,6 +115,9 @@ const http = {
   },
   sendCode:function(model){
     return Axios.get(api.sendCode,{params:model})
+  },
+  gamblingAction:function(){
+    return Axios.get(api.GamblingAction)
   }
 }
 

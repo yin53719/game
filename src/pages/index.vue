@@ -89,6 +89,7 @@
       <div class="btn">
         <img src="../assets/sz.png" @click="togg_up_open">
         <img src="../assets/qs.png" @click="togg_trend_show">
+         <img src="../assets/qs.png" @click="togg_detils_show">
         <img :src="play_url" @click="isPlay">
       </div>
     </div>
@@ -113,7 +114,7 @@
               <input class="mt_10" type placeholder="请输入注额" v-model="chicken_amount" @blur="scroll">
               <select class="mt_10" type placeholder="请输入注额" v-model="ch_odds">
                 <option value="0">请选择赔率</option>
-                <option :value="item" v-for="item in chicken_arry" :key="item">1:{{item}}</option>
+                <option :value="item" v-for="(item,i) in chicken_arry" :key="i">1:{{item}}</option>
               </select>
             </div>
             <div class="form_item" @click="up_gambling('chicken')">
@@ -285,6 +286,8 @@
         <div class="loot_res c_yellow">本局结果：{{profit}}</div>
       </div>
     </div>
+
+     <detils @hideLot="detilsColse" v-if="isShowDetils" ></detils>
   </div>
 </template>
 
@@ -297,7 +300,7 @@ import { web_url, http } from "@/api/request";
 import $ from "jquery";
 import { Stomp } from "stompjs/lib/stomp.js";
 import moment from "moment";
-
+import detils from '@/components/detils'
 let sock;
 let stompClient;
 let bgAudio = new Audio();
@@ -311,6 +314,9 @@ const gamTypeOrder = {
 };
 export default {
   name: "HelloWorld",
+  components:{
+    detils
+  },
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
@@ -354,7 +360,8 @@ export default {
       play_url: require("../assets/lbg.png"),
       music_url: "../../static/music/m.mp3",
       notification: "",
-      preTotel:0
+      preTotel:0,
+      isShowDetils:false
     };
   },
   mounted() {
@@ -377,11 +384,11 @@ export default {
         that.sele_id = [];
       }
     });
-    this.WebSocket.get_lottery(function(res) {
-      let data = JSON.parse(res.body);
-      that.lot_type = data;
-      that.get_lottery(data);
-    });
+    // this.WebSocket.get_lottery(function(res) {
+    //   let data = JSON.parse(res.body);
+    //   that.lot_type = data;
+    //   that.get_lottery(data);
+    // });
     // 获取状态
     this.state();
     // 获取汇总
@@ -445,6 +452,12 @@ export default {
     }
   },
   methods: {
+    togg_detils_show(){
+      this.isShowDetils = true;
+    },
+    detilsColse(){
+      this.isShowDetils = false;
+    },
     getTrend:function(){
        // 走势
        let that =this
@@ -531,6 +544,7 @@ export default {
     },
     // 上庄
     up_gambling(type) {
+      this.$Message.info("盈利将被扣除3%盈利");
       let model = {};
       if(this.userInfo.wallet.balance<20000){
          this.$Message.warning("账户余额小于20000，上庄失败")
@@ -658,6 +672,8 @@ export default {
           this.get_gambling();
         })
         .catch(res => {
+          this.$Message.warning("下注失败");
+          console.log(res.response)
           if (res.response.status) {
             this.$Message.warning("单庄下注不能超过20000且不能超出庄家注额");
           }
