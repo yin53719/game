@@ -170,7 +170,7 @@ export default {
     },
     // 获取验证码
     getAuthCode: function() {
-      if(this.checkPhone(this.r_phone) || this.r_phone==''){
+      if(!this.checkPhone(this.phone)){
          return false
       }
       this.sendAuthCode = false;
