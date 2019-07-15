@@ -161,7 +161,7 @@ export default {
     },
     checkPhone(r_phone){ 
         let phone = r_phone;
-        if(phone=='' || phone.length<10){ 
+        if(phone=='' || phone.toString().length<10){ 
           this.$Message.error('手机号码有误，请重填');
             return false; 
         }else{
@@ -170,7 +170,7 @@ export default {
     },
     // 获取验证码
     getAuthCode: function() {
-      if(!this.checkPhone(this.phone)){
+      if(!this.checkPhone(this.r_phone)){
          return false
       }
       this.sendAuthCode = false;
