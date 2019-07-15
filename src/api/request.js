@@ -81,8 +81,9 @@ const http = {
   },
   // 下注
   bets: function (model) {
-  	iView.LoadingBar.start();
-    return Axios.post(`${api.bets}${model.gamblingId}/bet`, model).then(res => {})
+    iView.LoadingBar.start();
+    console.log(model);
+    return Axios.post(`${api.bets}2/bet`, model)
   },
   getLog:function(model){
     console.log(model,'model>>>>>>')

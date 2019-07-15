@@ -27,7 +27,7 @@
         </div>
         <div class="login_form">
           <div class="item">
-            <input type placeholder="请输入手机号" class="mobile" v-model="r_phone">
+            <input type="phone" placeholder="请输入手机号" required class="mobile" v-model="r_phone">
             <span v-show="sendAuthCode" class="get_code" @click="getAuthCode">获取验证码</span>
             <span v-show="!sendAuthCode" class="get_code">
              {{auth_time}}s
@@ -84,7 +84,18 @@ export default {
       this.login = true;
     },
     Login: function() {
-      let that =this
+      let that =this;
+      if(this.phone==''){
+        this.$Message.error('手机号码必填');
+        return false;
+      }
+      if(!this.checkPhone(this.phone)){
+         return false
+      }
+      if(this.password ==''){
+        this.$Message.error('密码必填');
+        return false;
+      }
       http
         .login({
           username: this.phone,
@@ -95,6 +106,10 @@ export default {
           scope: "all"
         })
         .then(res => {
+          if(res.data.status===0){
+              this.$Message.error(res.data.msg);
+              return false;
+          }
           localStorage.setItem("token", res.data.access_token);
           localStorage.setItem("password",that.password );
           localStorage.setItem("phone",that.phone );
@@ -108,7 +123,22 @@ export default {
           
         })
     },
-    Register: function() {
+    Register() {
+      if(this.r_phone==''){
+        this.$Message.error('手机号码必填');
+        return false;
+      }
+      if(!this.checkPhone(this.r_phone)){
+         return false
+      }
+      if(this.smsCode ==''){
+        this.$Message.error('验证码必填');
+        return false;
+      }
+      if(this.r_password ==''){
+        this.$Message.error('密码必填');
+        return false;
+      }
       http
         .regster({
           phone: this.r_phone,
@@ -117,18 +147,39 @@ export default {
           smsCode:this.smsCode
         })
         .then(res => {
-          this.$Loading.finish();
-          this.$Message.success("注册成功");
-          this.phone = this.r_phone;
-          this.password = this.r_password;
-          this.Login();
+          if(res.data.status===0){
+            this.$Message.error(res.data.msg);
+          }else{
+            this.$Loading.finish();
+            this.$Message.success("注册成功");
+            this.phone = this.r_phone;
+            this.password = this.r_password;
+            this.Login();
+          }
+          
         });
+    },
+    checkPhone(r_phone){ 
+        let phone = r_phone;
+        if(phone=='' || phone.length<10){ 
+          this.$Message.error('手机号码有误，请重填');
+            return false; 
+        }else{
+          return true;
+        } 
     },
     // 获取验证码
     getAuthCode: function() {
+      if(this.checkPhone(this.r_phone) || this.r_phone==''){
+         return false
+      }
       this.sendAuthCode = false;
       this.auth_time = 60;
         http.sendCode({phone:this.r_phone}).then(res=>{
+          if(res.data.status===0){
+            this.$Message.error(res.data.msg);
+            return false;
+          }
           this.$Message.success("已发送，注意查收");
         })
       var auth_timetimer = setInterval(() => {

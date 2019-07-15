@@ -89,7 +89,7 @@
       <div class="btn">
         <img src="../assets/sz.png" @click="togg_up_open">
         <img src="../assets/qs.png" @click="togg_trend_show">
-         <img src="../assets/qs.png" @click="togg_detils_show">
+         <img src="../assets/jl.png" @click="togg_detils_show">
         <img :src="play_url" @click="isPlay">
       </div>
     </div>
@@ -486,6 +486,10 @@ export default {
       // 获取用户信息
       let that = this;
       http.getUser({}).then(res => {
+        if(res.data.status===0){
+            this.$Message.error(res.data.msg);
+            return false;
+        }
         that.userInfo = res.data;
       });
     },
@@ -529,6 +533,10 @@ export default {
       let that = this;
       this.trend_show = !this.trend_show;
       http.trend({}).then(res => {
+        if(res.data.status===0){
+            this.$Message.error(res.data.msg);
+            return false;
+        }
         that.trend = res.data;
       });
     },
@@ -579,7 +587,10 @@ export default {
         http
           .up_gambling(model)
           .then(res => {
-            console.log(res, "上庄成功");
+            if(res.data.status===0){
+                this.$Message.error(res.data.msg);
+                return false;
+            }
             this.get_gambling();
             this.$Loading.finish();
             this.sele_id.push(res.data.id);
@@ -596,6 +607,10 @@ export default {
     // 获取当前状态
     state() {
       http.state({}).then(res => {
+        if(res.data.status===0){
+            this.$Message.error(res.data.msg);
+            return false;
+        }
         let that = this;
         let nextTime = res.data.nextTime;
         console.log(nextTime)
@@ -608,6 +623,10 @@ export default {
         var setTime = setInterval(function() {
           if (seconds <= 0) {
             http.lottery({}).then((res)=>{
+              if(res.data.status===0){
+                  this.$Message.error(res.data.msg);
+                  return false;
+              }
                let data = res.data.body;
                 console.log(res)
                 that.lot_type = data;
@@ -625,6 +644,10 @@ export default {
     statistics() {
       let that = this;
       http.statistics({}).then(res => {
+        if(res.data.status===0){
+            this.$Message.error(res.data.msg);
+            return false;
+        }
         console.log(res.data, "统计");
         that.sum_total = res.data;
       });
@@ -669,6 +692,10 @@ export default {
           stake: this.sele_num
         })
         .then(res => {
+          if(res.data.status===0){
+              this.$Message.error(res.data.msg);
+              return false;
+          }
           this.sele_id.push(this.gamblingId);
           sessionStorage.setItem("lot_id", this.sele_id);
           this.$Loading.finish();
@@ -700,6 +727,10 @@ export default {
             : []
         })
         .then(res => {
+          if(res.data.status===0){
+              this.$Message.error(res.data.msg);
+              return false;
+          }
           this.profit = res.data.sum;
           console.log(res)
           this.lot_show = true;
