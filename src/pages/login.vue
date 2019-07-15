@@ -7,7 +7,7 @@
         </div>
         <div class="login_form">
           <div class="item">
-            <input type placeholder="请输入手机号" maxlength="11" v-model="phone">
+            <input type="phone" placeholder="请输入手机号" maxlength="11" v-model="phone">
           </div>
           <div class="item">
             <input type="password" placeholder="请输入密码" v-model="password">
@@ -27,7 +27,7 @@
         </div>
         <div class="login_form">
           <div class="item">
-            <input type="phone" placeholder="请输入手机号" required class="mobile" v-model="r_phone">
+            <input type="phone" placeholder="请输入手机号" maxlength="11" class="mobile" v-model="r_phone">
             <span v-show="sendAuthCode" class="get_code" @click="getAuthCode">获取验证码</span>
             <span v-show="!sendAuthCode" class="get_code">
              {{auth_time}}s
@@ -180,15 +180,16 @@ export default {
             this.$Message.error(res.data.msg);
             return false;
           }
+          var auth_timetimer = setInterval(() => {
+            this.auth_time--;
+            if (this.auth_time <= 0) {
+              this.sendAuthCode = true;
+              clearInterval(auth_timetimer);
+            }
+          }, 1000);
           this.$Message.success("已发送，注意查收");
         })
-      var auth_timetimer = setInterval(() => {
-        this.auth_time--;
-        if (this.auth_time <= 0) {
-          this.sendAuthCode = true;
-          clearInterval(auth_timetimer);
-        }
-      }, 1000);
+      
     }
   }
 };
