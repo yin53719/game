@@ -110,17 +110,14 @@ export default {
               this.$Message.error(res.data.msg);
               return false;
           }
-          localStorage.setItem("token", res.data.access_token);
-          localStorage.setItem("password",that.password );
-          localStorage.setItem("phone",that.phone );
+          window.localStorage.setItem("token", res.data.access_token);
+          window.localStorage.setItem("password",this.password );
+          window.localStorage.setItem("phone",this.phone );
           this.$router.push("/index");
           this.$Loading.finish();
           this.$Message.success("登陆成功");
         }).catch(res => {
-          if(res.response.status){
-           this.$Message.warning('用户名或密码错误')
-          }
-          
+         this.$Message.warning('用户名或密码错误')
         })
     },
     Register() {
@@ -173,13 +170,13 @@ export default {
       if(!this.checkPhone(this.r_phone)){
          return false
       }
-      this.sendAuthCode = false;
-      this.auth_time = 60;
         http.sendCode({phone:this.r_phone}).then(res=>{
           if(res.data.status===0){
             this.$Message.error(res.data.msg);
             return false;
           }
+           this.sendAuthCode = false;
+           this.auth_time = 60;
           var auth_timetimer = setInterval(() => {
             this.auth_time--;
             if (this.auth_time <= 0) {
