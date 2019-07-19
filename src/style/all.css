@@ -53,7 +53,7 @@ a {
 .top_wrap {
 	width: 100%;
 	height: 30rem;
-	background: url(../assets/top_bg.png);
+	background: url("~@/assets/top_bg.png");
 	background-size: cover;
 	position: relative;
 }
@@ -61,7 +61,7 @@ a {
 .top {
 	width: 100%;
 	height: 4.6875rem;
-	background: url(../assets/top.png);
+	background: url("~@/assets/top.png");
 	background-size: 100% 4.6875rem;
 }
 .trend_wrap .trend_head img{
@@ -136,7 +136,7 @@ a {
 	width: 17.65625rem;
 	height: 1.65625rem;
 	line-height: 1.65625rem;
-	background: url(../assets/text_bg.png);
+	background: url("~@/assets/text_bg.png");
 	background-size: cover;
 	text-align: center;
 	letter-spacing: 0.125rem;
@@ -153,7 +153,7 @@ a {
 	width: 100%;
 	top:17rem;
 	bottom: 0;
-	background-image: url(../assets/list_bg.png);
+	background-image: url("~@/assets/list_bg.png");
 	background-size:contain; 
 }
 
@@ -167,7 +167,7 @@ a {
 .list_top {
 	width: 100%;
 	height: 3.78125rem;
-	background: url(../assets/list_top.png);
+	background: url("~@/assets/list_top.png");
 	background-size: cover;
 	position: absolute;
 	top:-2rem;
@@ -175,11 +175,11 @@ a {
 }
 
 .list_tab {
-	width: 22.5rem;
+	width: 98%;
 	height: 3.125rem;
 	line-height: 3.125rem;
-	background: url(../assets/list_tab.png);
-	background-size: cover;
+	background: url("~@/assets/list_tab.png");
+	background-size: 100% 100%;
 	margin: 0 auto;
 	margin-top: 0.625rem;
 	font-size: 0.875rem;
@@ -197,10 +197,10 @@ a {
 }
 
 .list_li ul {
-	width: 22.5rem;
+	width: 99%;
 	height: 2.96875rem;
 	line-height: 2.96875rem;
-	background: url(../assets/libg.png);
+	background: url('~@/assets/libg.png');
 	background-size: contain;
 	margin: 0 auto;
 }
@@ -268,13 +268,13 @@ a {
 	top: 0;
 }
 .open_box {
-	background: url(../assets/box_bg.png);
+	background: url("~@/assets/box_bg.png");
 	background-repeat:no-repeat;
 	padding-top: 1.5625rem;
 	height: auto;
 	overflow: hidden;
 	padding-bottom: 1.5625rem;
-	background-size:100% auto; 
+	background-size:100% 100%; 
 }
 
 .open_tit {
@@ -285,7 +285,7 @@ a {
 }
 
 .form_wrap {
-	width: 21.875rem;
+	width: 100%;
 	margin: 0 auto;
 	padding-bottom: 2.96875rem;
 }
@@ -338,8 +338,7 @@ a {
 
 .form_wrap .btn img {
 	display: block;
-	width: 11.25rem;
-	height: 2.8125rem;
+	width: 65%;
 	margin: 0 auto;
 }
 .form_box{
@@ -378,29 +377,32 @@ a {
 .fix_btn {
 	width: 100%;
 	height: 3.25rem;
-	background: url(../assets/fixbg.png);
+	background: url("~@/assets/fixbg.png");
 	background-size:cover ;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .fix_btn .btn img {
 	display: block;
-	width: 3.6875rem;
-	height: 3.6875rem;
+	width: 3.3875rem;
+	height: 3.3875rem;
 	float: left;
 }
 .fix_btn .btn{
-	float: right;
-	margin-right: 0.9375rem;
-	margin-top: -0.625rem;
+	/* float: right;
+	margin-right: 0.9375rem; */
+	margin-top: -0.925rem;
 }
-.fix_btn .blance{
+/* .fix_btn .blance{
 	float: left;
 	padding: 0.5rem 0 0.5rem 0.5rem;
-}
+} */
 .fix_btn .blance dl{
 	display: block;
 	height: 1.09375rem;
@@ -414,7 +416,9 @@ a {
 	height: auto;
 	overflow: hidden;
 	display: block;
+	margin: 0;
 	margin-top: 0.2rem;
+	margin-left: 10px;
 }
 
 .fix_btn .blance li dd{
@@ -433,11 +437,12 @@ a {
 	width: 100%;
 }
 .total ul{
-	display: inline-block;
+	display: flex;
+  justify-content: space-around;
 }
 .total ul li{
 	display: block;
-	margin: 0 0.625rem;
+	margin: 0;
 	background:transparent;
 	border: 1px solid #fff;
 	border-radius: 1.25rem;
@@ -461,7 +466,7 @@ a {
 .se_dj {
 	width: 7.8125rem;
 	height: 3.4375rem;
-	background: url(../assets/sbg.png);
+	background: url("~@/assets/sbg.png");
 	background-size: contain;
 	font-size: 1.875rem;
 	line-height: 3.59375rem;
@@ -472,13 +477,14 @@ a {
 }
 
 .xz_wrap {
-	width: 22.1875rem;
+	width: 100%;
 	height: 7.25rem;
-	background: url(../assets/xzbg.png);
-	background-size: contain;
+	background: url("~@/assets/xzbg.png");
+	background-size: 100% 100%;
 	margin: 0 auto;
 	margin-top: 0.9375rem;
 	position: relative;
+
 }
 
 .person {
@@ -498,7 +504,7 @@ a {
 }
 
 .xz_sele {
-	width: 22.1875rem;
+	width: 100%;
 	margin: 0 auto;
 	margin-top: 1.5625rem;
 }
@@ -509,15 +515,13 @@ a {
 }
 
 .xz_sele li {
-	width: 3.25rem;
-	height: 3.09375rem;
+	width: 16%;
 	margin: 0;
 }
 
 .xz_sele li img {
 	display: block;
-	width: 3.25rem;
-	height: 3.09375rem;
+	width: 100%;
 	margin: 0;
 }
 
@@ -559,10 +563,11 @@ a {
 
 .list_li {
 	position: absolute;
-	left: 0.46875rem;
 	top: 5.5rem;
 	bottom: 3.25rem;
 	overflow: scroll;
+	width: 100%;
+	background-image: url("~@/assets/list_bg.png");
 }
 
 .trend_wrap_top {
@@ -590,7 +595,7 @@ a {
 .trend_list{
 	width: 22.1875rem;
 	height: 7.1875rem;
-	background: url(../assets/xzbg.png);
+	background: url("~@/assets/xzbg.png");
 	background-size:cover;
 	margin: 0 auto;
 	margin-top: 0.625rem;
@@ -632,16 +637,17 @@ a {
 }
 
 .lottery_main{
-	width: 21.25rem;
+	width: 93%;
 	height: 13rem;
-	background: url(../assets/lot.png);
-	background-size:cover ;
+	background: url("~@/assets/lot.png");
+	background-size: 100% 100%;
 	z-index: 1111;
 	position: absolute;
 	top: 50%;
+	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 	left: 50%;
-	margin-left: -10.9375rem;
+	transform: translate(-50%, -50%);
 }
 /*.lottery_main{
 	position: absolute;
@@ -670,6 +676,9 @@ a {
 }
 .lott_item ul{
 	display: inline-block;
+}
+.lott_item li{
+	margin: 0 15px;
 }
 .lottery_tit img{
 	display: block;

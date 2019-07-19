@@ -30,7 +30,7 @@
             <input type="phone" placeholder="请输入手机号" maxlength="11" class="mobile" v-model="r_phone">
             <span v-show="sendAuthCode" class="get_code" @click="getAuthCode">获取验证码</span>
             <span v-show="!sendAuthCode" class="get_code">
-             {{auth_time}}s
+              {{auth_time}}s
             </span>
           </div>
           <div class="item">
@@ -54,7 +54,7 @@
 <script>
 import { web_url, http } from "@/api/request";
 export default {
-  name: "component_name",
+  name: "login",
   data() {
     return {
       register: false,
@@ -66,33 +66,33 @@ export default {
       r_password_s: "",
       auth_time: "",
       sendAuthCode: true,
-      smsCode:''
+      smsCode: ''
     };
   },
-  mounted(){
+  mounted() {
     localStorage.removeItem('token');
-    this.phone =localStorage.getItem('phone')
-    this.password =localStorage.getItem('password')
+    this.phone = localStorage.getItem('phone')
+    this.password = localStorage.getItem('password')
   },
   methods: {
-    register_open: function() {
+    register_open: function () {
       this.register = true;
       this.login = false;
     },
-    login_open: function() {
+    login_open: function () {
       this.register = false;
       this.login = true;
     },
-    Login: function() {
-      let that =this;
-      if(this.phone==''){
+    Login: function () {
+      let that = this;
+      if (this.phone == '') {
         this.$Message.error('手机号码必填');
         return false;
       }
-      if(!this.checkPhone(this.phone)){
-         return false
+      if (!this.checkPhone(this.phone)) {
+        return false
       }
-      if(this.password ==''){
+      if (this.password == '') {
         this.$Message.error('密码必填');
         return false;
       }
@@ -106,33 +106,33 @@ export default {
           scope: "all"
         })
         .then(res => {
-          if(res.data.status===0){
-              this.$Message.error(res.data.msg);
-              return false;
+          if (res.data.status === 0) {
+            this.$Message.error(res.data.msg);
+            return false;
           }
           window.localStorage.setItem("token", res.data.access_token);
-          window.localStorage.setItem("password",this.password );
-          window.localStorage.setItem("phone",this.phone );
+          window.localStorage.setItem("password", this.password);
+          window.localStorage.setItem("phone", this.phone);
           this.$router.push("/index");
           this.$Loading.finish();
           this.$Message.success("登陆成功");
         }).catch(res => {
-         this.$Message.warning('用户名或密码错误')
+          this.$Message.warning('用户名或密码错误')
         })
     },
     Register() {
-      if(this.r_phone==''){
+      if (this.r_phone == '') {
         this.$Message.error('手机号码必填');
         return false;
       }
-      if(!this.checkPhone(this.r_phone)){
-         return false
+      if (!this.checkPhone(this.r_phone)) {
+        return false
       }
-      if(this.smsCode ==''){
+      if (this.smsCode == '') {
         this.$Message.error('验证码必填');
         return false;
       }
-      if(this.r_password ==''){
+      if (this.r_password == '') {
         this.$Message.error('密码必填');
         return false;
       }
@@ -141,52 +141,52 @@ export default {
           phone: this.r_phone,
           alias: "user",
           password: this.r_password,
-          smsCode:this.smsCode
+          smsCode: this.smsCode
         })
         .then(res => {
-          if(res.data.status===0){
+          if (res.data.status === 0) {
             this.$Message.error(res.data.msg);
-          }else{
+          } else {
             this.$Loading.finish();
             this.$Message.success("注册成功");
             this.phone = this.r_phone;
             this.password = this.r_password;
             this.Login();
           }
-          
+
         });
     },
-    checkPhone(r_phone){ 
-        let phone = r_phone;
-        if(phone=='' || phone.toString().length<10){ 
-          this.$Message.error('手机号码有误，请重填');
-            return false; 
-        }else{
-          return true;
-        } 
+    checkPhone(r_phone) {
+      let phone = r_phone;
+      if (phone == '' || phone.toString().length < 10) {
+        this.$Message.error('手机号码有误，请重填');
+        return false;
+      } else {
+        return true;
+      }
     },
     // 获取验证码
-    getAuthCode: function() {
-      if(!this.checkPhone(this.r_phone)){
-         return false
+    getAuthCode: function () {
+      if (!this.checkPhone(this.r_phone)) {
+        return false
       }
-        http.sendCode({phone:this.r_phone}).then(res=>{
-          if(res.data.status===0){
-            this.$Message.error(res.data.msg);
-            return false;
+      http.sendCode({ phone: this.r_phone }).then(res => {
+        if (res.data.status === 0) {
+          this.$Message.error(res.data.msg);
+          return false;
+        }
+        this.sendAuthCode = false;
+        this.auth_time = 60;
+        var auth_timetimer = setInterval(() => {
+          this.auth_time--;
+          if (this.auth_time <= 0) {
+            this.sendAuthCode = true;
+            clearInterval(auth_timetimer);
           }
-           this.sendAuthCode = false;
-           this.auth_time = 60;
-          var auth_timetimer = setInterval(() => {
-            this.auth_time--;
-            if (this.auth_time <= 0) {
-              this.sendAuthCode = true;
-              clearInterval(auth_timetimer);
-            }
-          }, 1000);
-          this.$Message.success("已发送，注意查收");
-        })
-      
+        }, 1000);
+        this.$Message.success("已发送，注意查收");
+      })
+
     }
   }
 };
@@ -195,7 +195,7 @@ export default {
 .login_wrap {
   width: 100%;
   height: 100vh;
-  background: url(../assets/login.jpg);
+  background: url("~@/assets/login.jpg");
   background-size: cover;
 }
 
@@ -206,7 +206,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url(../assets/login.png);
+  background: url("~@/assets/login.png");
   background-size: cover;
 }
 

@@ -4,16 +4,16 @@
       <div class="top" id="lottery">
         <!--鸡-->
         <div class="block_item chicken lottery-unit lottery-unit-0">
-          <img src="../assets/kjh.png">
-          <img src="../assets/kj.png">
+          <img src="@/assets/kjh.png">
+          <img src="@/assets/kj.png">
         </div>
         <!--梨-->
         <div class="block_item pear lottery-unit lottery-unit-1">
-          <img src="../assets/klh.png">
-          <img src="../assets/kl.png">
+          <img src="@/assets/klh.png">
+          <img src="@/assets/kl.png">
         </div>
         <div class="djdl">
-          <img src="../assets/dj.png">
+          <img src="@/assets/dj.png">
         </div>
         <div class="top_wrap_2">
           <div class="state_wrap">
@@ -33,7 +33,7 @@
     <div class="list_wrap">
       <div class="gonggao">
         <div class="laba">
-          <img src="../assets/laba.png">
+          <img src="@/assets/laba.png">
         </div>
         <div class="g_text">
           <marquee>{{notification}}</marquee>
@@ -59,7 +59,7 @@
               == "ALL"?"大吉大利":""}}
             </li>
             <li @click="togg_xz_show(item.id)">
-              <img src="../assets/xz.png">
+              <img src="@/assets/xz.png">
             </li>
           </ul>
         </div>
@@ -71,7 +71,7 @@
           <li>
             <dl>
               <dt>
-                <img src="../assets/id.png">
+                <img src="@/assets/id.png">
               </dt>
               <dd class="c_fff">{{userInfo.phone}}</dd>
             </dl>
@@ -79,7 +79,7 @@
           <li>
             <dl>
               <dt>
-                <img src="../assets/bit.png">
+                <img src="@/assets/bit.png">
               </dt>
               <dd class="c_yellow">{{userInfo.wallet?userInfo.wallet.balance:''}}</dd>
             </dl>
@@ -87,9 +87,9 @@
         </ul>
       </div>
       <div class="btn">
-        <img src="../assets/sz.png" @click="togg_up_open">
-        <img src="../assets/qs.png" @click="togg_trend_show">
-         <img src="../assets/jl.png" @click="togg_detils_show">
+        <img src="@/assets/sz.png" @click="togg_up_open">
+        <img src="@/assets/qs.png" @click="togg_trend_show">
+        <img src="@/assets/jl.png" @click="togg_detils_show">
         <img :src="play_url" @click="isPlay">
       </div>
     </div>
@@ -98,17 +98,17 @@
       <div class="open_bg" @click="togg_up_open"></div>
       <div class="open_main">
         <div class="open_line">
-          <img src="../assets/list_top.png">
+          <img src="@/assets/list_top.png">
         </div>
         <div class="close" @click="togg_up_open">
-          <img src="../assets/close.png">
+          <img src="@/assets/close.png">
         </div>
         <div class="open_box">
           <div class="open_tit">坐庄</div>
           <form class="form_box">
             <div class="form_item" @click="CHICKEN">
-              <img src="../assets/kjh.png" class="up_btn" v-if="isCHICKEN">
-              <img src="../assets/kj.png" class="up_btn" v-else>
+              <img src="@/assets/kjh.png" class="up_btn" v-if="isCHICKEN">
+              <img src="@/assets/kj.png" class="up_btn" v-else>
             </div>
             <div class="form_item input_wrap">
               <input class="mt_10" type placeholder="请输入注额" v-model="chicken_amount" @blur="scroll">
@@ -118,15 +118,15 @@
               </select>
             </div>
             <div class="form_item" @click="up_gambling('chicken')">
-              <img src="../assets/btn.png" class="up_btn">
+              <img src="@/assets/btn.png" class="up_btn">
             </div>
             <div class="state">{{isCHICKEN?'有鸡':'无鸡'}}</div>
           </form>
 
           <form class="form_box">
             <div class="form_item" @click="PEAR">
-              <img src="../assets/klh.png" class="up_btn" v-if="isPEAR">
-              <img src="../assets/kl.png" class="up_btn" v-else>
+              <img src="@/assets/klh.png" class="up_btn" v-if="isPEAR">
+              <img src="@/assets/kl.png" class="up_btn" v-else>
             </div>
             <div class="form_item input_wrap">
               <input class="mt_10" type placeholder="请输入注额" v-model="pear_amount" @blur="scroll">
@@ -136,15 +136,15 @@
               </select>
             </div>
             <div class="form_item" @click="up_gambling('pear')">
-              <img src="../assets/btn.png" class="up_btn">
+              <img src="@/assets/btn.png" class="up_btn">
             </div>
             <div class="state">{{isPEAR?'有梨':'无梨'}}</div>
           </form>
 
           <form class="form_box">
             <div class="form_item" @click="double">
-              <img src="../assets/djh.png" class="up_btn" v-if="isdouble">
-              <img src="../assets/dj.png" class="up_btn" v-else>
+              <img src="@/assets/djh.png" class="up_btn" v-if="isdouble">
+              <img src="@/assets/dj.png" class="up_btn" v-else>
             </div>
             <div class="form_item input_wrap">
               <input class="mt_10" type placeholder="请输入注额" v-model="double_amount" @blur="scroll">
@@ -154,7 +154,7 @@
               </select>
             </div>
             <div class="form_item" @click="up_gambling('djdl')">
-              <img src="../assets/btn.png" class="up_btn">
+              <img src="@/assets/btn.png" class="up_btn">
             </div>
             <div class="state">{{isdouble?'大吉大利':'平安是福'}}</div>
           </form>
@@ -166,10 +166,10 @@
       <div class="open_bg" @click="togg_xz_show"></div>
       <div class="open_main">
         <div class="open_line">
-          <img src="../assets/list_top.png">
+          <img src="@/assets/list_top.png">
         </div>
         <div class="close" @click="togg_xz_show">
-          <img src="../assets/close.png">
+          <img src="@/assets/close.png">
         </div>
         <div class="open_box">
           <div class="open_tit">下注{{total}}</div>
@@ -180,28 +180,28 @@
           <div class="xz_sele">
             <ul>
               <li @click="selenum(100)">
-                <img src="../assets/100.png">
+                <img src="@/assets/100.png">
               </li>
               <li @click="selenum(200)">
-                <img src="../assets/200.png">
+                <img src="@/assets/200.png">
               </li>
               <li @click="selenum(500)">
-                <img src="../assets/500.png">
+                <img src="@/assets/500.png">
               </li>
               <li @click="selenum(1000)">
-                <img src="../assets/1000.png">
+                <img src="@/assets/1000.png">
               </li>
               <li @click="selenum(5000)">
-                <img src="../assets/5000.png">
+                <img src="@/assets/5000.png">
               </li>
               <li @click="selenum(10000)">
-                <img src="../assets/10000.png">
+                <img src="@/assets/10000.png">
               </li>
             </ul>
           </div>
           <div class="form_wrap">
             <div class="btn" @click="bets">
-              <img src="../assets/qrxz.png">
+              <img src="@/assets/qrxz.png">
             </div>
           </div>
         </div>
@@ -212,10 +212,10 @@
       <div class="open_bg" @click="togg_trend_show"></div>
       <div class="open_main">
         <div class="open_line">
-          <img src="../assets/list_top.png">
+          <img src="@/assets/list_top.png">
         </div>
         <div class="close" @click="togg_trend_show">
-          <img src="../assets/close.png">
+          <img src="@/assets/close.png">
         </div>
         <div class="open_box">
           <div class="open_tit">近30局结果走势</div>
@@ -223,29 +223,29 @@
             <div class="trend_head">
               <ul>
                 <li>
-                  <img src="../assets/kjh.png">
+                  <img src="@/assets/kjh.png">
                 </li>
                 <li>
-                  <img src="../assets/klh.png">
+                  <img src="@/assets/klh.png">
                 </li>
                 <li>
-                  <img src="../assets/djh.png">
+                  <img src="@/assets/djh.png">
                 </li>
               </ul>
             </div>
             <div class="trend_body">
               <ul v-for="(item,i) in trend" :key="i">
                 <li item in trend>
-                  <img src="../assets/red.png" v-if="item =='CHICKEN'||item =='ALL'">
-                  <img src="../assets/black.png" v-else>
+                  <img src="@/assets/red.png" v-if="item =='CHICKEN'||item =='ALL'">
+                  <img src="@/assets/black.png" v-else>
                 </li>
                 <li>
-                  <img src="../assets/red.png" v-if="item == 'PEAR'|| item == 'ALL'">
-                  <img src="../assets/black.png" v-else>
+                  <img src="@/assets/red.png" v-if="item == 'PEAR'|| item == 'ALL'">
+                  <img src="@/assets/black.png" v-else>
                 </li>
                 <li>
-                  <img src="../assets/red.png" v-if="item =='ALL' ">
-                  <img src="../assets/black.png" v-else>
+                  <img src="@/assets/red.png" v-if="item =='ALL' ">
+                  <img src="@/assets/black.png" v-else>
                 </li>
               </ul>
             </div>
@@ -259,7 +259,7 @@
       <div class="lottery_gs" id="xuanzhun"></div>
       <div class="lottery_main">
         <div class="close" @click="hideLot">
-          <img src="../assets/close.png">
+          <img src="@/assets/close.png">
         </div>
         <div class="lottery_tit c_yellow">
           <p v-if="lot_type == 'CHICKEN'">有鸡无梨平安是福</p>
@@ -270,16 +270,16 @@
         <div class="lott_item">
           <ul>
             <li>
-              <img src="../assets/kjh.png" v-if="lot_type =='CHICKEN'||lot_type =='ALL'">
-              <img src="../assets/kj.png" v-else>
+              <img src="@/assets/kjh.png" v-if="lot_type =='CHICKEN'||lot_type =='ALL'">
+              <img src="@/assets/kj.png" v-else>
             </li>
             <li>
-              <img src="../assets/klh.png" v-if="lot_type =='PEAR'||lot_type =='ALL'">
-              <img src="../assets/kl.png" v-else>
+              <img src="@/assets/klh.png" v-if="lot_type =='PEAR'||lot_type =='ALL'">
+              <img src="@/assets/kl.png" v-else>
             </li>
             <li>
-              <img src="../assets/djh.png" v-if="lot_type =='ALL' ">
-              <img src="../assets/dj.png" v-else>
+              <img src="@/assets/djh.png" v-if="lot_type =='ALL' ">
+              <img src="@/assets/dj.png" v-else>
             </li>
           </ul>
         </div>
@@ -287,7 +287,7 @@
       </div>
     </div>
 
-     <detils @hideLot="detilsColse" v-if="isShowDetils" ></detils>
+    <detils @hideLot="detilsColse" v-if="isShowDetils"></detils>
   </div>
 </template>
 
@@ -314,7 +314,7 @@ const gamTypeOrder = {
 };
 export default {
   name: "HelloWorld",
-  components:{
+  components: {
     detils
   },
   data() {
@@ -357,25 +357,26 @@ export default {
       sele_id: [],
       profit: "",
       play: false,
-      play_url: require("../assets/lbg.png"),
-      music_url: "../../static/music/m.mp3",
+      play_url: require("@/assets/lbg.png"),
+      // music_url: "../../static/music/m.mp3",
+      music_url: require("@/../static/music/m.mp3"),
       notification: "",
-      preTotel:0,
-      isShowDetils:false
+      preTotel: 0,
+      isShowDetils: false
     };
   },
   mounted() {
     let that = this;
     this.get_gambling();
     this.WebSocket = new this.socket();
-    this.WebSocket.get_lock(function(res) {
-      that.music_url = "../../static/music/翻牌.mp3";
+    this.WebSocket.get_lock(function (res) {
+      that.music_url = require("@/../static/music/翻牌.mp3");
       // 播放音乐
       that.maudio();
       // debugger;
       console.log(res.body)
       if (res.body === "false") {
-        that.music_url = "../../static/music/m.mp3";
+        that.music_url = require("@/../static/music/m.mp3");
         that.maudio();
         // that.state();
         that.statistics();
@@ -407,24 +408,24 @@ export default {
     that.maudio();
   },
   watch: {
-    up_open: function(value) {
+    up_open: function (value) {
       if (!value) {
         console.log(value);
       }
     }
   },
   computed: {
-    sum_chicken: function() {
+    sum_chicken: function () {
       return Number(this.sum_total.chicken)
         ? Number(this.sum_total.chicken).toFixed(2)
         : "";
     },
-    sum_pear: function() {
+    sum_pear: function () {
       return Number(this.sum_total.pear)
         ? Number(this.sum_total.pear).toFixed(2)
         : "";
     },
-    sum_all: function() {
+    sum_all: function () {
       return Number(this.sum_total.all)
         ? Number(this.sum_total.all).toFixed(2)
         : "";
@@ -439,10 +440,10 @@ export default {
         NOTHING: 0
       };
       let result = [];
-      
+
       this.gambling
         .sort((a, b) => {
-          return b.odds*1 - a.odds*1;
+          return b.odds * 1 - a.odds * 1;
         })
         .forEach((item, index) => {
           result[count[item.choice] * 6 + gamTypeOrder[item.choice]] = item;
@@ -452,21 +453,21 @@ export default {
     }
   },
   methods: {
-    togg_detils_show(){
+    togg_detils_show() {
       this.isShowDetils = true;
     },
-    detilsColse(){
+    detilsColse() {
       this.isShowDetils = false;
     },
-    getTrend:function(){
-       // 走势
-       let that =this
-        http.trend({}).then(res => {
-          that.trend = res.data;
-        });
+    getTrend: function () {
+      // 走势
+      let that = this
+      http.trend({}).then(res => {
+        that.trend = res.data;
+      });
     },
-    amount: function(item) {
-       return item.chip;
+    amount: function (item) {
+      return item.chip;
       return parseInt(item.stake / item.odds - item.chip);
     },
     // 显示上庄
@@ -486,9 +487,9 @@ export default {
       // 获取用户信息
       let that = this;
       http.getUser({}).then(res => {
-        if(res.data.status===0){
-            this.$Message.error(res.data.msg);
-            return false;
+        if (res.data.status === 0) {
+          this.$Message.error(res.data.msg);
+          return false;
         }
         that.userInfo = res.data;
       });
@@ -533,18 +534,22 @@ export default {
       let that = this;
       this.trend_show = !this.trend_show;
       http.trend({}).then(res => {
-        if(res.data.status===0){
-            this.$Message.error(res.data.msg);
-            return false;
+        if (res.data.status === 0) {
+          this.$Message.error(res.data.msg);
+          return false;
         }
         that.trend = res.data;
       });
     },
     //获取赌局
     get_gambling() {
+
       http.gambling({}).then(res => {
         this.gambling = res.data;
+        // 2019-07-17 添加
+        this.getUserInfo();
       });
+
     },
     // 实时获取总注
     get_total(id) {
@@ -552,85 +557,85 @@ export default {
     },
     // 上庄
     up_gambling(type) {
-      
+
       let model = {};
-      if(this.userInfo.wallet.balance<20000){
-         this.$Message.warning("账户余额小于20000，上庄失败")
-      }else{
-            if (type == "chicken") {
-        model = {
-          choice: this.isCHICKEN ? "CHICKEN" : "NO_CHICKEN",
-          odds: this.ch_odds,
-          stake: this.chicken_amount
-        };
-      } else if (type == "pear") {
-        model = {
-          choice: this.isPEAR ? "PEAR" : "NO_PEAR",
-          odds: this.pe_odds,
-          stake: this.pear_amount
-        };
+      if (this.userInfo.wallet.balance < 20000) {
+        this.$Message.warning("账户余额小于20000，上庄失败")
       } else {
-        model = {
-          choice: this.isdouble ? "ALL" : "NOTHING",
-          odds: this.db_odds,
-          stake: this.double_amount
-        };
-      }
-      if (
-        this.chicken_amount > 50000 ||
-        this.pear_amount > 50000 ||
-        this.double_amount > 50000
-      ) {
-        this.$Message.warning("单项坐庄上限50000金币");
-      } else {
-        this.$Message.info("盈利将被扣除3%盈利");
-        http
-          .up_gambling(model)
-          .then(res => {
-            if(res.data.status===0){
+        if (type == "chicken") {
+          model = {
+            choice: this.isCHICKEN ? "CHICKEN" : "NO_CHICKEN",
+            odds: this.ch_odds,
+            stake: this.chicken_amount
+          };
+        } else if (type == "pear") {
+          model = {
+            choice: this.isPEAR ? "PEAR" : "NO_PEAR",
+            odds: this.pe_odds,
+            stake: this.pear_amount
+          };
+        } else {
+          model = {
+            choice: this.isdouble ? "ALL" : "NOTHING",
+            odds: this.db_odds,
+            stake: this.double_amount
+          };
+        }
+        if (
+          this.chicken_amount > 50000 ||
+          this.pear_amount > 50000 ||
+          this.double_amount > 50000
+        ) {
+          this.$Message.warning("单项坐庄上限50000金币");
+        } else {
+          this.$Message.info("盈利将被扣除3%盈利");
+          http
+            .up_gambling(model)
+            .then(res => {
+              if (res.data.status === 0) {
                 this.$Message.error(res.data.msg);
                 return false;
-            }
-            this.get_gambling();
-            this.$Loading.finish();
-            this.sele_id.push(res.data.id);
-            sessionStorage.setItem("lot_id", this.sele_id);
-            this.$Message.success("坐庄成功");
-            this.getUserInfo()
-          })
-          .catch(res => {
-            this.$Loading.error();
-          });
-      }
+              }
+              this.get_gambling();
+              this.$Loading.finish();
+              this.sele_id.push(res.data.id);
+              sessionStorage.setItem("lot_id", this.sele_id);
+              this.$Message.success("坐庄成功");
+              this.getUserInfo()
+            })
+            .catch(res => {
+              this.$Loading.error();
+            });
+        }
       }
     },
     // 获取当前状态
     state() {
       http.state({}).then(res => {
-        if(res.data.status===0){
-            this.$Message.error(res.data.msg);
-            return false;
+        if (res.data.status === 0) {
+          this.$Message.error(res.data.msg);
+          return false;
         }
         let that = this;
         let nextTime = res.data.nextTime;
         console.log(nextTime)
-        if (nextTime!==sessionStorage.getItem('next_time')){
-          sessionStorage.setItem('next_time',nextTime);
+        if (nextTime !== sessionStorage.getItem('next_time')) {
+          sessionStorage.setItem('next_time', nextTime);
           sessionStorage.removeItem('lot_id')
         }
         let seconds = moment(nextTime).diff(moment(), "seconds");
         console.log(seconds)
-        var setTime = setInterval(function() {
+        var setTime = setInterval(function () {
           if (seconds <= 0) {
-            http.lottery({}).then((res)=>{
-              if(res.data.status===0){
-                  this.$Message.error(res.data.msg);
-                  return false;
+            http.lottery({}).then((res) => {
+              if (res.data.status === 0) {
+                this.$Message.error(res.data.msg);
+                return false;
               }
-               let data = res.data.body;
-                console.log(res)
-                that.lot_type = data;
-                that.get_lottery(data);
+              let data = res.data.body;
+              console.log(res)
+              that.lot_type = data;
+              that.get_lottery(data);
             });
 
             clearInterval(setTime);
@@ -644,9 +649,9 @@ export default {
     statistics() {
       let that = this;
       http.statistics({}).then(res => {
-        if(res.data.status===0){
-            this.$Message.error(res.data.msg);
-            return false;
+        if (res.data.status === 0) {
+          this.$Message.error(res.data.msg);
+          return false;
         }
         console.log(res.data, "统计");
         that.sum_total = res.data;
@@ -654,13 +659,13 @@ export default {
     },
     //下注筹码
     selenum(num) {
-      if(this.sele_num>=20000){
+      if (this.sele_num >= 20000) {
         return false;
       }
       this.sele_num = this.sele_num + num;
 
-      if(this.sele_num>20000){
-         this.sele_num =this.sele_num - num;
+      if (this.sele_num > 20000) {
+        this.sele_num = this.sele_num - num;
       }
       // if (this.sele_num > 10000) {
       //   this.$Message.warning("单笔下注不能超过10000");
@@ -677,10 +682,10 @@ export default {
       bgAudio.loop = true;
       bgAudio.setAttribute("src", this.music_url);
       if (this.play) {
-        this.play_url = require("../assets/lb.png");
+        this.play_url = require("@/assets/lb.png");
         bgAudio.play();
       } else {
-        this.play_url = require("../assets/lbg.png");
+        this.play_url = require("@/assets/lbg.png");
         bgAudio.pause();
       }
     },
@@ -692,9 +697,10 @@ export default {
           stake: this.sele_num
         })
         .then(res => {
-          if(res.data.status===0){
-              this.$Message.error(res.data.msg);
-              return false;
+          if (res.data.status === 0) {
+            this.$Message.error(res.data.msg);
+            this.$Loading.finish();
+            return false;
           }
           this.sele_id.push(this.gamblingId);
           sessionStorage.setItem("lot_id", this.sele_id);
@@ -727,9 +733,9 @@ export default {
             : []
         })
         .then(res => {
-          if(res.data.status===0){
-              this.$Message.error(res.data.msg);
-              return false;
+          if (res.data.status === 0) {
+            this.$Message.error(res.data.msg);
+            return false;
           }
           this.profit = res.data.sum;
           console.log(res)
@@ -755,7 +761,7 @@ export default {
       let v = this;
       v.toastText = str;
       v.toastShow = true;
-      setTimeout(function() {
+      setTimeout(function () {
         v.toastShow = false;
       }, 1500);
     },
@@ -782,14 +788,14 @@ export default {
       while (num) {
         tbetList.push(scores[pointer]);
         var pointer = Math.floor(Math.random() * 4 + 1); //随机数下注类型
-        htmlT += "<img src='/static/images/bet" + pointer + ".png'/>";
+        htmlT += "<img src='./static/images/bet" + pointer + ".png'/>";
         num--;
       }
       $("#J_bet_list1").html(htmlT);
       var allTime = data.counting == null ? vuethis.xztime : data.counting;
       allTime -= delay / 1000;
       //倒计时
-      var ttt = setInterval(function() {
+      var ttt = setInterval(function () {
         if (allTime == 0) {
           clearInterval(ttt);
           //倒计时完了
@@ -824,7 +830,7 @@ export default {
       var randomAreaY_t = Math.floor(tH * 0.5);
 
       var tbetnum = 0;
-      var tt = setInterval(function() {
+      var tt = setInterval(function () {
         tbetnum += tbetList.shift();
         $("#tbetnum").html(tbetnum);
         var randomX = Math.floor(Math.random() * randomAreaX_t + 1);
@@ -853,7 +859,7 @@ export default {
         times: 70, //转动次数
         cycle: 100, //转动基本次数：即至少需要转动多少次再进入抽奖环节
         prize: -1, //中奖位置
-        init: function(id) {
+        init: function (id) {
           if ($("#" + id).find(".lottery-unit").length > 0) {
             var $lottery = $("#" + id);
             var $units = $lottery.find(".lottery-unit");
@@ -862,7 +868,7 @@ export default {
             $lottery.find(".lottery-unit-" + this.index).addClass("active");
           }
         },
-        roll: function() {
+        roll: function () {
           var index = this.index;
           var count = this.count;
           var lottery = this.obj;
@@ -967,7 +973,7 @@ export default {
 .g_text {
   width: 14.28125rem;
   height: 1.3125rem;
-  background: url(../assets/text_bg.png);
+  background: url("~@/assets/text_bg.png");
   background-size: cover;
   color: #f1d17b;
   font-size: 0.875rem;

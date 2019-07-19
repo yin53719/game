@@ -7,6 +7,10 @@ import socket from './style/socket'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import $ from 'jquery'
+import vConsole from 'vconsole'
+
+// var vconsole = new vConsole()
+
 Vue.config.productionTip = false
 Vue.prototype.socket = socket
 Vue.use(iView);
