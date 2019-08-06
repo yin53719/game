@@ -6,10 +6,18 @@
       <div class="close" @click="hideLot">
         <img src="../assets/close.png">
       </div>
-      <div class="loot_res c_yellow" style="padding-top:10px;">操作记录</div>
+      <div class="loot_res c_yellow" style="padding-top:20px;">操作记录</div>
       <div class="detils-list">
-        <li><span class="left">当前局</span><br> <span v-for="(v,i) in list.current">{{i+1}}.{{ v }}</span></li>
-        <li><span class="left">上一局</span><br> <span v-for="(v,i) in list.last">{{i+1}}.{{ v }}</span></li>
+        <li>
+          <p class="left">当前局</p>
+          <div class="flex-wr">
+            <span class="spli" v-for="(v,i) in list.current">{{ v }}</span>
+          </div>
+        </li>
+        <li>
+          <p class="left">上一局</p>
+          <div class="flex-wr"><span class="spli" v-for="(v,i) in list.last">{{ v }}</span></div>
+        </li>
       </div>
 
     </div>
@@ -46,20 +54,28 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.detils-list {
-  width: 90%;
-  li {
-    width: 100%;
-    margin-top: 10px;
-    margin-left: 10px;
-
-    span {
-      font-size: 1.25rem;
-      color: #f1d17b;
-      text-align: center;
-      display: inline-block;
-    }
-  }
+<style scoped>
+li {
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+}
+p {
+  font-size: 1rem;
+  color: #f1d17b;
+  text-align: left;
+}
+span {
+  font-size: .9rem;
+  color: #f1d17b;
+  text-align: center;
+}
+.spli {
+  margin-left: 15px;
+}
+.flex-wr {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

@@ -6,6 +6,10 @@ var user_info = JSON.parse(sessionStorage.getItem('user_info'))
 if (user_info) {
   var agent_id = user_info.agent.id
 }
+//[ 1, 3, 4, 5, 6, 7 ]
+// Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// Axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
+
 Axios.interceptors.request.use(function (config) {
   let token = localStorage.getItem('token');
   if (token) {
